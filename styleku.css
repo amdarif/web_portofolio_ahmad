@@ -1,13 +1,265 @@
-.tex-nav{
-    font-size: 30px;
+
+
+/* =========================
+   HEADER / NAVBAR
+========================= */
+
+.navbar {
+    min-height: 70px;
 }
-.logo{
-    width: 50px;
-    height: 50px;
+
+
+/* Logo */
+
+.logo {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
     border-radius: 50%;
-    border-color:rgb(232, 239, 235)
+
+    border: 2px solid white;
 }
-.hgt-intro{
-    height: 700px;
+
+
+/* Nama pada navbar */
+
+.navbar-brand {
+    color: #212529;
+}
+
+.navbar-brand:hover {
+    color: #0d6efd;
+}
+
+
+/* Menu */
+
+.navbar-nav {
+    gap: 10px;
+}
+
+
+/* Link menu */
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+
+/* Ketika mouse diarahkan ke menu */
+
+.navbar-nav .nav-link:hover {
+    background-color: #f0f6ff;
+    color: #0d6efd;
+}
+
+
+/* Menu yang sedang aktif */
+
+.navbar-nav .nav-link.active {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+#about {
+    min-height: 500px;
+    background-color: #ffffff;
+}
+
+#about .card {
+    transition: 0.3s;
+}
+
+#about .card:hover {
+    transform: translateY(-5px);
+}
+
+
+
+#kontak {
+    background-color: #ededed;
+}
+
+#kontak .card {
+    transition: 0.3s;
+}
+
+#kontak .card:hover {
+    transform: translateY(-5px);
+}
+
+
+
+/* =========================
+   SERVICE
+========================= */
+
+.service-section {
+    background-color: #ededed;
+}
+
+/* Card Service */
+.service-card {
+    border: none;
+    border-radius: 15px;
+    
+    transition: 0.3s;
+}
+
+/* Efek ketika mouse diarahkan ke card */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Gambar Service */
+.service-img {
+    width: 150px;
+    height: 150px;
+    
+    object-fit: cover;
+    
+    border-radius: 15px;
+    
+    transition: 0.3s;
+}
+
+/* Gambar ikut membesar sedikit ketika card disentuh */
+.service-card:hover .service-img {
+    transform: scale(1.05);
+}
+
+
+
+
+/* =========================
+   HERO / INTRODUCE
+========================= */
+
+.hero-section {
+    background-color: #ffffff;
+}
+
+
+/* Membuat foto berada di tengah */
+
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Foto */
+
+
+/* Efek ketika mouse berada di foto */
+
+.hero-image {
+    width: 350px;
+    height: auto;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+}
+
+
+/* Responsive untuk HP */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 250px;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .hero-section .d-flex {
+        justify-content: center;
+    }
+
+}
+
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-section {
+    background-color: #ffffff;
+    padding: 40px 0 20px 0;
+    border-top: 1px solid #eeeeee;
+}
+
+.footer-section h5 {
+    color: #212529;
+}
+
+.footer-section hr {
+    margin: 25px 0 20px 0;
+    color: #dee2e6;
+}
+
+
+
+/* =========================
+   SKILL / PENGUASAAN
+========================= */
+
+.skill-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #eeeeee;
+}
+
+
+/* Progress bar */
+
+.skill-item .progress {
+    height: 12px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* Isi progress */
+
+.skill-item .progress-bar {
+    background-color: #0d6efd;
+    border-radius: 10px;
+
+    transition: width 1s ease;
+}
+
+
+/* Efek ketika hover */
+
+.skill-item:hover .progress-bar {
+    background-color: #0b5ed7;
 }
 
