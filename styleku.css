@@ -1,24 +1,22 @@
-
-
-
-
-.navbar {
-    min-height: 70px;
+/* 1. Aturan Global Section & Body */
+body {
+    position: relative; /* Wajib ada agar koordinat scrollspy terbaca akurat */
+    scroll-behavior: smooth; /* Autoscroll halus saat menu diklik */
 }
 
+section {
+    padding: 120px 0; /* Memberikan ruang atas bawah agar teks tidak tertutup navbar */
+    min-height: 100vh; /* Memaksa setiap section setinggi satu layar penuh */
+}
 
-
+/* 2. Komponen Navbar & Logo */
 .logo {
     width: 45px;
     height: 45px;
-
     object-fit: cover;
-
     border-radius: 50%;
-
     border: 2px solid white;
 }
-
 
 .navbar-brand {
     color: #212529;
@@ -28,116 +26,27 @@
     color: #0d6efd;
 }
 
-
-
-.navbar-nav {
-    gap: 10px;
-}
-
-
-
-
 .navbar-nav .nav-link {
     font-weight: 500;
-
     padding: 10px 14px;
-
     border-radius: 8px;
-
     transition: 0.3s;
 }
-
-
 
 .navbar-nav .nav-link:hover {
     background-color: #f0f6ff;
     color: #0d6efd;
 }
 
-
-
-
 .navbar-nav .nav-link.active {
-    color: #0d6efd;
+    color: #0d6efd !important;
     font-weight: bold;
 }
 
-
-
-
-
-
-
-#about {
-    min-height: 500px;
-    background-color: #ffffff;
-}
-
-#about .card {
-    transition: 0.3s;
-}
-
-#about .card:hover {
-    transform: translateY(-5px);
-}
-
-
-
-#kontak {
-    background-color: #ededed;
-}
-
-#kontak .card {
-    transition: 0.3s;
-}
-
-#kontak .card:hover {
-    transform: translateY(-5px);
-}
-
-
-
-.service-section {
-    background-color: #ededed;
-}
-
-
-.service-card {
-    border: none;
-    border-radius: 15px;
-    
-    transition: 0.3s;
-}
-
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-
-.service-img {
-    width: 150px;
-    height: 150px;
-    
-    object-fit: cover;
-    
-    border-radius: 15px;
-    
-    transition: 0.3s;
-}
-
-
-.service-card:hover .service-img {
-    transform: scale(1.05);
-}
-
-
-
+/* 3. Section Custom Styles */
 .hero-section {
     background-color: #ffffff;
 }
-
 
 .hero-image-container {
     display: flex;
@@ -145,40 +54,74 @@
     align-items: center;
 }
 
-
 .hero-image {
     width: 350px;
     height: auto;
-
     border-radius: 20px;
-
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-
     transition: 0.3s;
 }
 
+.service-section {
+    background-color: #ededed;
+}
 
+.service-card {
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+}
 
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.service-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.service-card:hover .service-img {
+    transform: scale(1.05);
+}
+
+.about-section {
+    background-color: #ffffff;
+}
+
+/* Khusus section terakhir, diberikan jarak bawah ekstra */
+/* Supaya jika layar mentok di bawah, menu "Kontak" bisa dipaksa menyala aktif */
+.kontak-section {
+    background-color: #ededed;
+    padding-bottom: 250px; 
+}
+
+#about .card, #kontak .card {
+    transition: 0.3s;
+}
+
+#about .card:hover, #kontak .card:hover {
+    transform: translateY(-5px);
+}
+
+/* 4. Responsive Media Queries */
 @media (max-width: 768px) {
-
     .hero-section {
         text-align: center;
     }
-
     .hero-image {
         width: 250px;
         height: auto;
         margin-top: 20px;
     }
-
     .hero-section .d-flex {
         justify-content: center;
     }
-
 }
-
-
-
 
 .footer-section {
     background-color: #ffffff;
@@ -194,5 +137,3 @@
     margin: 25px 0 20px 0;
     color: #dee2e6;
 }
-
-
