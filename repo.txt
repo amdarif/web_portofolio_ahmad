@@ -6,7 +6,7 @@ Rombel		:	A2
 
 Username	: 	amdarif
 Repository	:	web_portofolio_ahmad
-Branch		:	Web_Bootstrap
+Branch		:	Web-JS
 Link GitHub	:	https://github.com/amdarif/web_portofolio_ahmad.git
 
 
