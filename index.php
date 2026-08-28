@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
     <head>
@@ -14,6 +15,8 @@
     </head>
 
     <body data-bs-spy="scroll" data-bs-target="#navbar-utama" data-bs-root-margin="0px 0px -40%">
+
+
 
         <nav id="navbar-utama" class="navbar bg-white sticky-top shadow-sm navbar-expand">
             <div class="container-fluid px-4">
@@ -201,6 +204,19 @@
             <!-- MODAL MEKANIK -->
             <div class="modal fade" id="modalMekanik" tabindex="-1">
 
+                <?php
+
+                include "koneksi.php";
+
+                // $query = "SELECT * FROM modal_service"; ini kalo aku mau ambil semua
+                $query = "SELECT * FROM modal_service WHERE id = 1";
+
+                $result = mysqli_query($koneksi, $query);
+
+                ?>
+
+                <?php while ($data = mysqli_fetch_assoc($result)) { ?>
+                
                 <div class="modal-dialog modal-dialog-centered">
 
                     <div class="modal-content">
@@ -208,7 +224,7 @@
                         <div class="modal-header">
 
                             <h5 class="modal-title fw-bold">
-                                Mekanik
+                                <?php echo $data["judul"]?>
                             </h5>
 
                         </div>
@@ -216,22 +232,14 @@
                         <div class="modal-body">
 
                             <p>
-                                Pada bidang mekanik saya mempelajari berbagai
-                                dasar sistem mekanik.
+                                <?php echo $data["keterangan"]?>
                             </p>
 
                             <h6 class="fw-bold mt-4">
-                                Yang saya pelajari:
+                                <?php echo $data["petunjuk"]?>
                             </h6>
 
-                            <ul>
-                                <li>Perakitan komponen mekanik</li>
-                                <li>Pembacaan gambar teknik</li>
-                                <li>Gambar CAD</li>
-                                <li>Perawatan mesin CNC</li>
-                                <li>Dasar-dasar sistem mekanik</li>
-                                <li>Pembuatan dan perawatan komponen</li>
-                            </ul>
+                            <?php echo $data["isi"]?>
 
                         </div>
 
@@ -249,6 +257,8 @@
                     </div>
 
                 </div>
+                <?php } 
+                mysqli_close($koneksi); ?>
 
             </div>
 
@@ -257,6 +267,18 @@
             <!-- MODAL ELEKTRIK -->
             <div class="modal fade" id="modalElektrik" tabindex="-1">
 
+            <?php
+
+                include "koneksi.php";
+
+                $query = "SELECT * FROM modal_service WHERE id = 2";
+
+                $result = mysqli_query($koneksi, $query);
+
+                ?>
+
+                <?php while ($data = mysqli_fetch_assoc($result)) { ?>
+
                 <div class="modal-dialog modal-dialog-centered">
 
                     <div class="modal-content">
@@ -264,7 +286,7 @@
                         <div class="modal-header">
 
                             <h5 class="modal-title fw-bold">
-                                Elektrik
+                                <?php echo $data["judul"]?>
                             </h5>
 
                         </div>
@@ -272,24 +294,14 @@
                         <div class="modal-body">
 
                             <p>
-                                Pada bidang elektrik saya mempelajari sistem
-                                kelistrikan, kontrol, wiring, PLC, dan otomasi
-                                industri.
+                                <?php echo $data["keterangan"]?>
                             </p>
 
                             <h6 class="fw-bold mt-4">
-                                Yang saya pelajari:
+                                <?php echo $data["petunjuk"]?>
                             </h6>
 
-                            <ul>
-                                <li>Wiring panel listrik</li>
-                                <li>Instalasi kelistrikan</li>
-                                <li>PLC</li>
-                                <li>Motor listrik</li>
-                                <li>Kontrol industri</li>
-                                <li>Sensor dan aktuator</li>
-                                <li>Sistem otomasi</li>
-                            </ul>
+                            <?php echo $data["isi"]?>
 
                         </div>
 
@@ -307,6 +319,9 @@
                     </div>
 
                 </div>
+
+                <?php } 
+                mysqli_close($koneksi); ?>
 
             </div>
 
@@ -315,6 +330,18 @@
             <!-- MODAL INFORMATIK -->
             <div class="modal fade" id="modalInformatik" tabindex="-1">
 
+            <?php
+
+                include "koneksi.php";
+
+                $query = "SELECT * FROM modal_service WHERE id = 3";
+
+                $result = mysqli_query($koneksi, $query);
+
+                ?>
+
+                <?php while ($data = mysqli_fetch_assoc($result)) { ?>
+
                 <div class="modal-dialog modal-dialog-centered">
 
                     <div class="modal-content">
@@ -322,31 +349,22 @@
                         <div class="modal-header">
 
                             <h5 class="modal-title fw-bold">
-                                Informatik
+                                <?php echo $data["judul"]?>
                             </h5>
-
 
                         </div>
 
                         <div class="modal-body">
 
                             <p>
-                                Pada bidang informatika saya mempelajari dasar
-                                pemrograman dan pembuatan website.
+                                <?php echo $data["keterangan"]?>
                             </p>
 
                             <h6 class="fw-bold mt-4">
-                                Yang saya pelajari:
+                                <?php echo $data["petunjuk"]?>
                             </h6>
 
-                            <ul>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>Bootstrap</li>
-                                <li>Dasar pemrograman</li>
-                                <li>Pembuatan website</li>
-                                <li>Struktur dan desain halaman web</li>
-                            </ul>
+                            <?php echo $data["isi"]?>
 
                         </div>
 
@@ -365,6 +383,8 @@
 
                 </div>
 
+                <?php } 
+                mysqli_close($koneksi); ?>
             </div>
 
 
@@ -446,9 +466,28 @@
                         <div class="col-lg-6">
                             <div class="d-flex flex-column align-items-center text-center">
 
-                                <div class="container text-center mt-5">
+                                <?php
 
-                                    <p class="mb-2 text-secondary">Penilain keahlian menurut Tim/partner kerja </p> 
+                                    include "koneksi.php";
+
+                                    $query = "SELECT * FROM keahlian_vote ORDER BY id";
+                                    $result = mysqli_query($koneksi, $query);
+
+                                    $suara = [];
+
+                                    while ($data = mysqli_fetch_assoc($result)) {
+                                        $suara[] = (int) $data["jumlah_vote"];
+                                    }
+
+                                    $total = array_sum($suara);
+
+                                ?>
+                            
+                                <div id="keahlian" class="container text-center mt-5">
+
+                                    <p class="mb-2 text-secondary">
+                                        Penilaian keahlian menurut Tim/partner kerja
+                                    </p>
 
                                     <div class="row justify-content-center mt-4">
                                         <div class="col-md-6">
@@ -456,14 +495,16 @@
                                         </div>
                                     </div>
 
-
-                                    <p id="infoTotal" class="mt-3">Total Suara: 0</p>
+                                    <p id="infoTotal" class="mt-3">
+                                        Total Suara: <?php echo $total; ?>
+                                    </p>
 
                                 </div>
 
+
                                 <script>
 
-                                    let suara = [0, 0, 0, 0];
+                                    let suara = <?php echo json_encode($suara); ?>;
 
                                     let nama = ["PLC", "Program", "Elektro", "Mekanik"];
 
@@ -472,6 +513,7 @@
 
                                         data: {
                                             labels: nama,
+
                                             datasets: [{
                                                 data: suara,
                                                 backgroundColor: ["red", "green", "blue", "orange"]
@@ -482,12 +524,15 @@
 
                                         options: {
                                             plugins: {
+
                                                 legend: {
                                                     display: false
                                                 },
 
                                                 datalabels: {
+
                                                     color: "white",
+
                                                     font: {
                                                         weight: "bold",
                                                         size: 14
@@ -495,7 +540,9 @@
 
                                                     formatter: function(value, context) {
 
-                                                        let total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                                        let total = context.dataset.data.reduce(
+                                                            (a, b) => a + b, 0
+                                                        );
 
                                                         if (total === 0) {
                                                             return "";
@@ -503,29 +550,47 @@
 
                                                         let persen = (value / total * 100).toFixed(1);
 
-                                                        return context.chart.data.labels[context.dataIndex] + "\n" + persen + "%";
+                                                        return context.chart.data.labels[context.dataIndex]
+                                                            + "\n" + persen + "%";
                                                     }
                                                 }
                                             }
                                         }
                                     });
 
+                                    function tambahSuara(id) {
 
-                                    function tambahSuara(i) {
+                                        fetch("vote.php", {
+                                            method: "POST",
 
-                                        suara[i]++;
+                                            headers: {
+                                                "Content-Type": "application/x-www-form-urlencoded"
+                                            },
 
-                                        let total = suara[0] + suara[1] + suara[2] + suara[3];
+                                            body: "id=" + id
+                                        })
 
-                                        grafik.data.datasets[0].data = suara;
+                                        .then(response => response.text())
 
-                                        grafik.update();
+                                        .then(() => {
 
-                                        document.getElementById("infoTotal").innerText =
-                                            "Total Suara: " + total;
+                                            
+                                            suara[id - 1]++;
+                                           
+                                            grafik.data.datasets[0].data = suara;
+
+                                            grafik.update();
+
+                                            let total = suara.reduce((a, b) => a + b, 0);
+
+                                            document.getElementById("infoTotal").innerText =
+                                             "Total Suara: " + total;
+
+                                        });
+
                                     }
 
-                                </script>
+                                    </script>
 
                             </div>
                         </div>
@@ -578,12 +643,24 @@
                             </h6>
 
                             <div class="d-flex justify-content-center gap-2 mt-4">
-                                        <button onclick="tambahSuara(0)" class="btn btn-danger">+ PLC</button>
-                                        <button onclick="tambahSuara(1)" class="btn btn-success">+ Program</button>
-                                        <button onclick="tambahSuara(2)" class="btn btn-primary">+ Elektro</button>
-                                        <button onclick="tambahSuara(3)" class="btn btn-warning">+ Mekanik</button>
-                            </div>
 
+                                <button onclick="tambahSuara(1)" class="btn btn-danger">
+                                    + PLC
+                                </button>
+
+                                <button onclick="tambahSuara(2)" class="btn btn-success">
+                                    + Program
+                                </button>
+
+                                <button onclick="tambahSuara(3)" class="btn btn-primary">
+                                    + Elektro
+                                </button>
+
+                                <button onclick="tambahSuara(4)" class="btn btn-warning">
+                                    + Mekanik
+                                </button>
+
+                            </div>
                         </div>
 
                     </div>
@@ -626,57 +703,72 @@
 
                                 <div class="d-flex align-items-center mb-3">
                                         <div class="card h-100 shadow-sm border-0 w-100">
-                                            <div class="card-body row align-items-center">
-                                            
-                                                <div class="col-auto">
-                                                    <img src="aset/gbr/gmail.webp" width="30px">
-                                                </div>
-                                            
-                                                <div class="col">
-                                                    <small class="text-secondary d-block">Gmail</small>
-                                                    <div class="fw-bold">
-                                                        arif44hmad@gmail.com
+                                             
+                                            <a href="https://mail.google.com/mail/?view=cm&to=arif44hmad@gmail.com"
+                                                target="_blank">
+  
+                                                <div class="card-body row align-items-center">
+                                                
+                                                    <div class="col-auto">
+                                                        <img src="aset/gbr/gmail.webp" width="30px">
+                                                    </div>
+                                                
+                                                    <div class="col">
+                                                        <small class="text-secondary d-block">Gmail</small>
+                                                        <div class="fw-bold tex-color-media">
+                                                            arif44hmad@gmail.com
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                             </a> 
                                         </div>
                                     </div>
 
 
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="card h-100 shadow-sm border-0 w-100">
-                                            <div class="card-body row align-items-center">
                                             
-                                                <div class="col-auto">
-                                                    <img src="aset/gbr/wa.png" width="30px">
+                                            <a href="https://wa.me/6285163524125?text=Halo%20saya%20tertarik%20dengan%20portfolio%20Anda"
+                                                        target="_blank">
+
+                                                <div class="card-body row align-items-center">
+                                                   
+                                                     <div class="col-auto">
+                                                                <img src="aset/gbr/wa.png" width="30px">
+                                                            </div>
+                                                        
+                                                            <div class="col">
+                                                                <small class="text-secondary d-block">WhatsApp</small>
+                                                                <div class="fw-bold tex-color-media">
+                                                                    085163524125
+                                                            </div>
+                                                    </div>   
                                                 </div>
-                                            
-                                                <div class="col">
-                                                    <small class="text-secondary d-block">WhatsApp</small>
-                                                    <div class="fw-bold">
-                                                        085163524125
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
 
 
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="card h-100 shadow-sm border-0 w-100">
-                                            <div class="card-body row align-items-center">
                                             
-                                                <div class="col-auto">
-                                                    <img src="aset/gbr/ig.webp" width="30px">
-                                                </div>
-                                            
-                                                <div class="col">
-                                                    <small class="text-secondary d-block">Instagram</small>
-                                                    <div class="fw-bold">
+                                            <a href="https://instagram.com/rieefff_" target="_blank">
+
+                                                <div class="card-body row align-items-center">
+
+                                                    <div class="col-auto">
+                                                        <img src="aset/gbr/ig.webp" width="30px">
+                                                    </div>
+                                                            
+                                                    <div class="col">
+                                                        <small class="text-secondary d-block">Instagram</small>
+                                                        <div class="fw-bold tex-color-media">
                                                         @rieefff_
+                                                        </div>         
                                                     </div>
+                                                            
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -684,45 +776,79 @@
                         </div>
 
                         <div class="col-lg-6">
+
                             <div class="card shadow-sm border-0">
+
                                 <div class="card-body p-4">
 
                                     <h4 class="fw-bold mb-4">
                                         Kirim Pesan
                                     </h4>
 
-                                    <form>
+                                    <form action="kirim_kontak.php" method="POST">
 
                                         <div class="mb-3">
-                                            <label class="form-label">Nama</label>
-                                            <input type="text"
+
+                                            <label class="form-label">
+                                                Nama
+                                            </label>
+
+                                            <input
+                                                type="text"
+                                                name="nama"
                                                 class="form-control"
-                                                placeholder="Masukkan nama kamu">
+                                                placeholder="Masukkan nama kamu"
+                                                required>
+
                                         </div>
 
+
                                         <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="email"
+
+                                            <label class="form-label">
+                                                Email
+                                            </label>
+
+                                            <input
+                                                type="email"
+                                                name="email"
                                                 class="form-control"
-                                                placeholder="Masukkan email kamu">
+                                                placeholder="Masukkan email kamu"
+                                                required>
+
                                         </div>
+
 
                                         <div class="mb-3">
-                                            <label class="form-label">Pesan</label>
-                                            <textarea class="form-control"
-                                                    rows="5"
-                                                    placeholder="Tulis pesan kamu..."></textarea>
+
+                                            <label class="form-label">
+                                                Pesan
+                                            </label>
+
+                                            <textarea
+                                                name="pesan"
+                                                class="form-control"
+                                                rows="5"
+                                                placeholder="Tulis pesan kamu..."
+                                                required></textarea>
+
                                         </div>
 
-                                        <button type="submit"
-                                                class="btn btn-primary w-100">
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary w-100">
+
                                             Kirim Pesan
+
                                         </button>
 
                                     </form>
 
                                 </div>
+
                             </div>
+
                         </div>
 
                     </div>
@@ -755,63 +881,6 @@
             </footer>
     
     <script src="aset/js/bootstrap.min.js"></script>
-
-    
-
-
-
-    <div class="row">
-
-    <!-- Instagram -->
-    <div class="col-md-4">
-        <a href="https://instagram.com/rieefff_"
-           target="_blank"
-           class="text-decoration-none">
-
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Instagram</h5>
-                    <p>@USERNAME</p>
-                </div>
-            </div>
-
-        </a>
-    </div>
-
-
-    <!-- Gmail -->
-    <div class="col-md-4">
-        <a href="mailto:arif44hmad@gmail.com"
-           class="text-decoration-none">
-
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Email</h5>
-                    <p>emailkamu@gmail.com</p>
-                </div>
-            </div>
-
-        </a>
-    </div>
-
-
-    <!-- WhatsApp -->
-    <div class="col-md-4">
-        <a href="https://wa.me/6285163524125"
-           target="_blank"
-           class="text-decoration-none">
-
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>WhatsApp</h5>
-                    <p>Chat melalui WhatsApp</p>
-                </div>
-            </div>
-
-        </a>
-    </div>
-
-</div>
 
     </body>
 </html>
